@@ -1,0 +1,19 @@
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  font-size: 100px;
+  font-weight: bold;
+}
+
+.clock-operate {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-btn {
+    margin-right: 36px;
+  }
+}
