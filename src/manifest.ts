@@ -15,22 +15,22 @@ export default defineManifest({
     48: 'img/logo-48.png',
     128: 'img/logo-128.png',
   },
-  action: {
-    default_popup: 'popup.html',
-    default_icon: 'img/logo-48.png',
-  },
+  // action: {
+  //   default_popup: 'popup.html',
+  //   default_icon: 'img/logo-48.png',
+  // },
   // options_page: 'options.html',
   // devtools_page: 'devtools.html',
-  background: {
-    service_worker: 'src/background/index.ts',
-    type: 'module',
-  },
-  // content_scripts: [
-  //   {
-  //     matches: ['http://localhost:3000/green_wave'],
-  //     js: ['src/contentScript/index.js'],
-  //   },
-  // ],
+  // background: {
+  //   service_worker: 'src/background/index.ts',
+  //   type: 'module',
+  // },
+  content_scripts: [
+    {
+      matches: ['https://www.notion.so/*'],
+      js: ['src/contentScript/index.tsx'],
+    },
+  ],
   // side_panel: {
   //   default_path: 'sidepanel.html',
   // },
