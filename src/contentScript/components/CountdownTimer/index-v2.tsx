@@ -72,6 +72,8 @@ const CountdownTimer = ({ originalMinute, onFinish }: CountdownTimerProps) => {
   // Update the clock time every second
   // 为防止当前页面不活跃后，setInterval暂停，使用当前时间与未来预设时间的差值，代替简单的数字-1
   useEffect(() => {
+    if (clockOperate !== 'running') return;
+
     const timer = setInterval(() => {
       console.log('1')
       const duration = futureTime.diff(dayjs(), 'second')
@@ -81,7 +83,7 @@ const CountdownTimer = ({ originalMinute, onFinish }: CountdownTimerProps) => {
       }
 
       // 当时间为0是停止
-      if (duration === 0) {
+      if (duration <= 0) {
         resetOriginalTime(originalMinute)
         onFinish()
         clearInterval(timer)
