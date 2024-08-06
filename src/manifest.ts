@@ -21,10 +21,10 @@ export default defineManifest({
   // },
   // options_page: 'options.html',
   // devtools_page: 'devtools.html',
-  // background: {
-  //   service_worker: 'src/background/index.ts',
-  //   type: 'module',
-  // },
+  background: {
+    service_worker: 'src/background/index.ts',
+    type: 'module',
+  },
   content_scripts: [
     {
       matches: ['https://www.notion.so/*'],

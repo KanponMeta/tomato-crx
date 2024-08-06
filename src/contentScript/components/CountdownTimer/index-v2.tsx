@@ -79,19 +79,18 @@ const CountdownTimer = ({ originalMinute, onFinish }: CountdownTimerProps) => {
         console.log('duration', duration)
         setClock(duration)
       }
+
+      // 当时间为0是停止
+      if (duration === 0) {
+        resetOriginalTime(originalMinute)
+        onFinish()
+        clearInterval(timer)
+      }
     }, 1000)
     return () => {
       clearInterval(timer)
     }
   }, [clockOperate, futureTime])
-
-  // 当时间为0是停止
-  useEffect(() => {
-    if (clock <= 0) {
-      resetOriginalTime(originalMinute)
-      onFinish()
-    }
-  }, [clock, onFinish, originalMinute])
 
   return (
     <div className="countdown">

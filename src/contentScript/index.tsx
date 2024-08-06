@@ -2,19 +2,9 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { Button } from 'antd'
-import CountdownTimer from '../contentScript/components/CountdownTimer/index-v2'
+import CountdownTimer from './components/CountdownTimer/index-v2'
 
 import './index.css'
-const notify = (message: string) => {
-  chrome.action.setBadgeText({ text: '' })
-  chrome.notifications.create({
-    type: 'basic',
-    iconUrl: '@/img/logo-128.png',
-    title: 'Time to Hydrate',
-    message: message,
-    priority: 0,
-  })
-}
 
 const config: {
   [key: string]: { title: string; time: number; finishWords: string }
@@ -59,7 +49,9 @@ const Popup = () => {
       </div>
       <CountdownTimer
         originalMinute={tomatoTime}
-        onFinish={() => notify(config[tomato].finishWords)}
+        onFinish={() => {
+          chrome.runtime.sendMessage({ type: 'notification', message: config[tomato].finishWords })
+        }}
       />
     </main>
   )
@@ -67,8 +59,7 @@ const Popup = () => {
 
 const tomatoElement = document.createElement('div')
 tomatoElement.id = 'tomato-app'
-// document.getElementsByClassName('notion-body')[0].appendChild(tomatoElement)
-document.getElementsByClassName('layout-content')[0].appendChild(tomatoElement)
+document.getElementsByClassName('notion-body')[0].appendChild(tomatoElement)
 
 ReactDOM.createRoot(document.getElementById('tomato-app') as HTMLElement).render(
   <React.StrictMode>
