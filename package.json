@@ -1,9 +1,9 @@
 {
   "name": "tomato",
   "displayName": "tomato",
-  "version": "0.0.0",
-  "author": "**",
-  "description": "",
+  "version": "1.0.0",
+  "author": "kanpon",
+  "description": "kanpon tomato timer chrome extension",
   "type": "module",
   "license": "MIT",
   "keywords": [
@@ -36,6 +36,7 @@
     "gulp": "^4.0.2",
     "gulp-zip": "^6.0.0",
     "prettier": "^3.0.3",
+    "sass": "^1.77.8",
     "typescript": "^5.2.2",
     "vite": "^4.4.11"
   }
